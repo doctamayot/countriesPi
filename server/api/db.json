@@ -433,7 +433,7 @@
                 ]
             },
             "capital": [
-                "Papeetē"
+                "Papeete"
             ],
             "altSpellings": [
                 "PF",
@@ -3206,7 +3206,7 @@
                 ]
             },
             "capital": [
-                "Hagåtña"
+                "Hagatna"
             ],
             "altSpellings": [
                 "GU",
@@ -4991,7 +4991,7 @@
         },
         {
             "name": {
-                "common": "Åland Islands",
+                "common": "Aland Islands",
                 "official": "Åland Islands",
                 "nativeName": {
                     "swe": {
@@ -6068,7 +6068,7 @@
                     "common": "Macedonia Północna"
                 },
                 "por": {
-                    "official": "República da Macedônia do Norte",
+                    "official": "República da Macedonia do Norte",
                     "common": "Macedónia do Norte"
                 },
                 "rus": {
@@ -6839,8 +6839,8 @@
                     "common": "Kolumbia"
                 },
                 "por": {
-                    "official": "República da Colômbia",
-                    "common": "Colômbia"
+                    "official": "República da Colombia",
+                    "common": "Colombia"
                 },
                 "rus": {
                     "official": "Республика Колумбия",
@@ -7357,7 +7357,7 @@
                 ]
             },
             "capital": [
-                "Port-aux-Français"
+                "Port-aux-Francais"
             ],
             "altSpellings": [
                 "TF",
@@ -11883,7 +11883,7 @@
                 ]
             },
             "capital": [
-                "Chișinău"
+                "Chisinau"
             ],
             "altSpellings": [
                 "MD",
@@ -13056,7 +13056,7 @@
         },
         {
             "name": {
-                "common": "São Tomé and Príncipe",
+                "common": "Sao Tomé and Príncipe",
                 "official": "Democratic Republic of São Tomé and Príncipe",
                 "nativeName": {
                     "por": {
@@ -13088,7 +13088,7 @@
                 ]
             },
             "capital": [
-                "São Tomé"
+                "Sao Tomé"
             ],
             "altSpellings": [
                 "ST",
@@ -21820,11 +21820,11 @@
         {
             "name": {
                 "common": "Ivory Coast",
-                "official": "Republic of Côte d'Ivoire",
+                "official": "Republic of Cote d'Ivoire",
                 "nativeName": {
                     "fra": {
                         "official": "République de Côte d'Ivoire",
-                        "common": "Côte d'Ivoire"
+                        "common": "Cote d'Ivoire"
                     }
                 }
             },

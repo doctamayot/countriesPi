@@ -1,8 +1,12 @@
-const { Op } = require("sequelize");
 const { Activity, Country } = require("../db");
+const activityValidate = require("../helpers/activityValidate");
 
 const createActivity = async (req, res) => {
   try {
+    const message = await activityValidate(req.body);
+    if (message) {
+      return res.status(400).json({ message: message });
+    }
     const activity = await Activity.create(req.body);
     await activity.addCountries(req.body.countries);
     return res.status(200).json(activity);

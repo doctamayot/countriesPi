@@ -7,7 +7,10 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.STRING,
       validate: {
-        is: /^[A-Za-z]{3}$/, // Expresión regular para validar que sean 3 letras
+        is: {
+          args: /^[A-Za-z]{3}$/,
+          msg: "Must be three letters",
+        },
       },
       primaryKey: true,
       allowNull: false,

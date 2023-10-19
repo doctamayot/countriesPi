@@ -1,8 +1,6 @@
 const { DataTypes } = require("sequelize");
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define("Activity", {
     id: {
       type: DataTypes.INTEGER,
@@ -24,10 +22,23 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        min: 1,
-        max: 5,
-        isNumeric: true,
-        isInt: true,
+        min: {
+          args: 1,
+          msg: "The difficulty must be at least 1.",
+        },
+        max: {
+          args: 5,
+          msg: "The difficulty cannot be greater than 5.",
+        },
+
+        isNumeric: {
+          args: true,
+          msg: "The difficulty must be a number",
+        },
+        isInt: {
+          args: true,
+          msg: "The difficulty must be a integer number",
+        },
       },
     },
     duration: {

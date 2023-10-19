@@ -17,7 +17,7 @@ const getCountries = async (req, res) => {
       });
       if (country.length === 0) {
         return res
-          .status(200)
+          .status(404)
           .json({ message: "The country you are looking for does not exist" });
       }
       return res.status(200).json(country);
@@ -39,6 +39,11 @@ const getCountry = async (req, res) => {
       },
       include: Activity,
     });
+    if (country.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "The country you are looking for does not exist" });
+    }
     return res.status(200).json(country);
   } catch (error) {
     res.status(500).json({ message: error.message });

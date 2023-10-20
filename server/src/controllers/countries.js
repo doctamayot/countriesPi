@@ -11,14 +11,12 @@ const getCountries = async (req, res) => {
       const country = await Country.findAll({
         where: {
           name: {
-            [Op.iLike]: `%${item}%`,
+            [Op.iLike]: `${item}%`,
           },
         },
       });
       if (country.length === 0) {
-        return res
-          .status(404)
-          .json({ message: "The country you are looking for does not exist" });
+        return res.status(200).json(country);
       }
       return res.status(200).json(country);
     } else {

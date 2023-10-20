@@ -1,0 +1,40 @@
+.landingPage {
+  background-image: url("https://www.bavgroup.com/sites/default/files/Best%20Countries_16x9.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.principal {
+  background-color: rgb(48, 48, 48);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 70px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.buttonPrincipal {
+  margin-top: 50px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #d8142e;
+  transition: background-color 0.4s; /* Transición suave al pasar el mouse */
+}
+
+.buttonPrincipal:hover {
+  background-color: #d7e0e9;
+}

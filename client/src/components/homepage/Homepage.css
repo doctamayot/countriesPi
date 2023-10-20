@@ -1,10 +1,74 @@
 .principalHomepage {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 0px;
 }
 
 .country {
   margin: 5px;
+}
+
+.ErrorExist {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 50px;
+}
+
+.buttonPag {
+  margin-top: 50px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #d8142e;
+  transition: background-color 0.4s; /* Transición suave al pasar el mouse */
+}
+
+.buttonPag:hover {
+  background-color: #0056b3;
+}
+
+.paginationButton {
+  display: flex;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 20px 1px;
+  background-color: #fff;
+  color: #333;
+}
+
+.ButtonActive {
+  display: flex;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 20px 1px;
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
 }

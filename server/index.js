@@ -5,11 +5,11 @@ const loadApi = require("./src/helpers/loadApi");
 const PORT = 3001;
 
 conn
-  .sync({ force: true })
+  .sync({ alter: true })
   .then(() => {
     server.listen(PORT, () => {
       console.log(`Server listening on port ${PORT}`);
     });
-    loadApi();
+    //loadApi();
   })
   .catch((error) => console.error(error));

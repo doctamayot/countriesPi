@@ -1,14 +1,14 @@
 const { Activity } = require("../db");
 
 const activityValidate = async (activity) => {
-  const { name, season, dificulty, duration, countries } = activity;
+  const { name, season, dificulty, duration, country } = activity;
 
   //Tipos de datos
   if (typeof name !== "string") return "Name must be a string";
   if (typeof season !== "string") return "Season must be a string";
   if (typeof dificulty !== "number") return "Dificulty must be a number";
   if (typeof duration !== "number") return "Dificulty must be a number";
-  if (!Array.isArray(countries)) return "Countries must be an array";
+  if (!Array.isArray(country)) return "Countries must be an array";
 
   if (!name || !season || !dificulty) return "'Required fields are missing";
   const activityFound = await Activity.findOne({

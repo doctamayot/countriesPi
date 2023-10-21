@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import "./Navbar.css";
 import { useDispatch } from "react-redux";
-import { getAllCountries, getCountriesBy } from "../../redux/actions";
+import { getCountriesBy } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [value, setValue] = useState("");
@@ -16,6 +17,9 @@ export const Navbar = () => {
   return (
     <div className="principalNav">
       <h2 className="logo">Countries App</h2>
+      <Link to="/activity">
+        <h2 className="button">Create Activity</h2>
+      </Link>
       <input
         className="inputNav"
         type="text"

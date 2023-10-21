@@ -11,6 +11,8 @@ export const Homepage = () => {
   const countriesPerPage = 10;
 
   const [loading, setLoading] = useState(false);
+  const [selectedContinent, setSelectedContinent] = useState();
+  const [selectedPopulation, setSelectedPopulation] = useState();
 
   ///Redux
   const dispatch = useDispatch();
@@ -18,10 +20,7 @@ export const Homepage = () => {
   const allCountries = useSelector((state) => state.allCountries);
   const currentPage = useSelector((state) => state.currentPage);
 
-  console.log(pagCountries);
-
   const [countries, setCountries] = useState(pagCountries);
-  console.log(countries);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,6 +48,11 @@ export const Homepage = () => {
 
   //Pagination
   const NumberOfCountries = pagCountries.length;
+  const totalPages = Math.ceil(NumberOfCountries / countriesPerPage);
+  const pageNumbers = [];
+  for (let i = 0; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
 
   const nextHandle = () => {
     const nextPage = currentPage + 1;
@@ -72,11 +76,59 @@ export const Homepage = () => {
     dispatch(currentAction(page));
   };
 
-  const totalPages = Math.ceil(NumberOfCountries / countriesPerPage);
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const filterContinent = (e) => {
+    const page = currentPage;
+    const index = page * countriesPerPage;
+    const selectedValue = e.target.value;
+    setSelectedContinent(selectedValue);
+    if (selectedValue === "All") {
+      setCountries(pagCountries.slice(index, index + 10));
+    } else {
+      setCountries(
+        [...pagCountries]
+          .filter((country) => country.continents[0] === selectedValue)
+          .slice(index, index + 10)
+      );
+    }
+  };
 
   return (
     <>
+      <div className="filters">
+        <div className="filter">
+          <label>Continent:</label>
+          <select value={selectedContinent} onChange={filterContinent}>
+            <option value="All">All</option>
+            <option value="Africa">Africa</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+            <option value="South America">South America</option>
+            <option value="North America">North America</option>
+            <option value="Asia">Asia</option>
+          </select>
+        </div>
+
+        <div className="filter">
+          <label>Max Population:</label>
+          <select
+            value={selectedPopulation}
+            onChange={(e) => setSelectedPopulation(e.target.value)}
+          >
+            <option value="">Any</option>
+            <option value="1000000">Less than 1 million</option>
+          </select>
+        </div>
+        <div className="filter">
+          <label>Sort:</label>
+          <select
+          // value={selectedPopulation}
+          // onChange={(e) => setSelectedPopulation(e.target.value)}
+          >
+            <option value="">Any</option>
+            <option value="1000000">Less than 1 million</option>
+          </select>
+        </div>
+      </div>
       {loading && <Loading />}
       <div className="principalHomepage">
         {countries.length ? (
@@ -86,6 +138,7 @@ export const Homepage = () => {
                 name={country.name}
                 img={country.img}
                 continent={country.continents}
+                id={country.id}
               />
             </div>
           ))

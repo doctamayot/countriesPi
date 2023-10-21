@@ -10,7 +10,7 @@ export const Pagination = ({
       <button className="buttonPag" onClick={prevHandle}>
         Prev
       </button>
-      {pageNumbers.map((pageNumber) => (
+      {pageNumbers.slice(1).map((pageNumber) => (
         <button
           className={
             currentPage === pageNumber - 1 ? "ButtonActive" : "paginationButton"

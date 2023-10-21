@@ -21,7 +21,9 @@ const getCountries = async (req, res) => {
       return res.status(200).json(country);
     } else {
       //Without query
-      const countries = await Country.findAll();
+      const countries = await Country.findAll({
+        include: Activity,
+      });
       return res.status(200).json(countries);
     }
   } catch (error) {
@@ -31,7 +33,7 @@ const getCountries = async (req, res) => {
 const getCountry = async (req, res) => {
   const { idPais } = req.params;
   try {
-    const country = await Country.findAll({
+    const country = await Country.findOne({
       where: {
         id: idPais,
       },

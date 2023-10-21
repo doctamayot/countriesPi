@@ -72,3 +72,25 @@
   color: #fff;
   border: 1px solid #007bff;
 }
+
+.filters {
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.filter {
+  margin-right: 20px;
+}
+
+.filter label {
+  margin-right: 5px;
+}
+
+.filter select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

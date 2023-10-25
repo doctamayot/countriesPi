@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { getCountry } from "../../redux/actions";
+
 import { Link, useParams } from "react-router-dom";
 
 import styles from "./Detail.module.css";
-import { Loading } from "../loading/Loading";
 
 export const Detail = () => {
   const [loading, setLoading] = useState(false);
@@ -31,7 +32,6 @@ export const Detail = () => {
   return (
     <>
       <h1 className={styles.title}>Country Detail</h1>
-      {loading && <Loading />}
       <div className={styles.card}>
         <div className={styles.cardContent}>
           <div className={styles.cardTitle}>{country.name}</div>
@@ -41,14 +41,29 @@ export const Detail = () => {
             className={styles.cardImage}
           />
           <div className={styles.cardDetails}>
-            <div>ID: {country.id}</div>
-            <div>Continent: {country.continents}</div>
-            <div>Capital: {country.capital}</div>
-            <div>Subregion: {country.subregion}</div>
-            <div>Population: {country.poblacion}</div>
-            <div>Area: {country.area}</div>
-            <div>
-              Activities:{" "}
+            <div style={{ marginTop: "5px" }}>
+              <div className={styles.titles}>ID:</div> {country.id}
+            </div>
+            <div style={{ marginTop: "5px" }}>
+              <div className={styles.titles}>Continent:</div>{" "}
+              {country.continents}
+            </div>
+            <div style={{ marginTop: "5px" }}>
+              <div className={styles.titles}>Capital:</div> {country.capital}
+            </div>
+            <div style={{ marginTop: "5px" }}>
+              <div className={styles.titles}>Subregion:</div>{" "}
+              {country.subregion}
+            </div>
+            <div style={{ marginTop: "5px" }}>
+              <div className={styles.titles}>Population:</div>{" "}
+              {country.poblacion} habs
+            </div>
+            <div style={{ marginTop: "5px" }}>
+              <div className={styles.titles}>Area:</div> {country.area}
+            </div>
+            <div style={{ marginTop: "5px" }}>
+              <div style={{ fontWeight: "bolder" }}>Activities:</div>
               {country.Activities && country.Activities.length === 0 ? (
                 <h3>There are no activities in this country.</h3>
               ) : (

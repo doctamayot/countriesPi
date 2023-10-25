@@ -9,11 +9,7 @@ import {
   orderByName,
   orderByPop,
 } from "../../redux/actions";
-
-import { Card } from "../card/Card";
-import { Loading } from "../loading/Loading";
-import { Pagination } from "../pagination/Pagination";
-import { Filters } from "../filters/Filters";
+import { Card, Pagination, Filters } from "../../components";
 import styles from "./Homepage.module.css";
 
 export const Homepage = () => {
@@ -24,25 +20,13 @@ export const Homepage = () => {
   ///Redux
   const dispatch = useDispatch();
   const pagCountries = useSelector((state) => state.filteredCountries);
-  const allCountries = useSelector((state) => state.allCountries);
   const currentPage = useSelector((state) => state.currentPage);
   const activities = useSelector((state) => state.activities);
 
   const [countries, setCountries] = useState(pagCountries);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        await dispatch(getAllCountries());
-      } catch (error) {
-        return error.message;
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    dispatch(getAllCountries());
   }, []);
 
   //Pagination
@@ -70,21 +54,21 @@ export const Homepage = () => {
     const nextPage = currentPage + 1;
     const index = nextPage * countriesPerPage;
     if (index >= NumberOfCountries) return;
-    setCountries([...pagCountries].slice(index, index + 10));
+    setCountries([...pagCountries].slice(index, index + countriesPerPage));
     dispatch(currentAction(nextPage));
   };
   const prevHandle = () => {
     const prevPage = currentPage - 1;
     const index = prevPage * countriesPerPage;
     if (currentPage <= 0) return;
-    setCountries([...pagCountries].slice(index, index + 10));
+    setCountries([...pagCountries].slice(index, index + countriesPerPage));
     dispatch(currentAction(prevPage));
   };
 
   const paginationHandle = (e) => {
     const page = e.target.value - 1;
     const index = page * countriesPerPage;
-    setCountries([...pagCountries].slice(index, index + 10));
+    setCountries([...pagCountries].slice(index, index + countriesPerPage));
     dispatch(currentAction(page));
   };
 
@@ -112,7 +96,7 @@ export const Homepage = () => {
         handleChangeSortPop={handleChangeSortPop}
         activities={activities}
       />
-      {loading && <Loading />}
+
       <div className={styles.principalHomepage}>
         {countries.length ? (
           countries.map((country, index) => (

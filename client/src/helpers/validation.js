@@ -1,3 +1,13 @@
+import axios from "axios";
+
+let ids;
+const fetch = async () => {
+  const { data } = await axios.get("http://localhost:3001/countries");
+  ids = data.map((country) => country.id);
+};
+
+fetch();
+
 export const validation = (field, value) => {
   switch (field) {
     case "name":
@@ -21,7 +31,7 @@ export const validation = (field, value) => {
         return "The season must be a minimun of 2 letters ";
       break;
     case "duration":
-      const valueNumb = Number(value);
+      const valueNumb = Number(value) || "";
       if (value.length === 0) {
         return "Duration is empty";
       } else if (typeof valueNumb !== "number") {
@@ -46,7 +56,9 @@ export const validation = (field, value) => {
         return "Country must be a string";
       } else if (value.length < 3)
         return "Country must be a minimun of 3 letters";
-
+      else if (!value.includes(",")) {
+        if (!ids.includes(value)) return "This country not exists!!";
+      }
       break;
 
     default:

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { getCountriesBy } from "../../redux/actions";
+
+import { Link } from "react-router-dom";
+
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
@@ -16,7 +18,12 @@ export const Navbar = () => {
   };
   return (
     <div className={styles.principalNav}>
-      <h2 className={styles.logo}>Countries App</h2>
+      <Link to="/">
+        <h2 className={styles.logo}>Countries App</h2>
+      </Link>
+      <Link to="/activities">
+        <h2 className={styles.button}>Admin Activities</h2>
+      </Link>
       <Link to="/activity">
         <h2 className={styles.button}>Create Activity</h2>
       </Link>

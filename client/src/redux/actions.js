@@ -3,6 +3,8 @@ import {
   CREATE_ACTIVITY,
   CREATE_ACTIVITY_ERROR,
   CURRENT_PAGE,
+  DELETE_ACTIVITY,
+  DELETE_ACTIVITY_ERROR,
   FILTER_BY_ACTIVITY,
   FILTER_BY_CONTINENT,
   GET_ACTIVITY,
@@ -132,5 +134,23 @@ export const orderByPop = (type) => {
   return {
     type: ORDER_BY_POP,
     payload: type,
+  };
+};
+
+export const deleteActivity = (name) => {
+  const endpoint = "http://localhost:3001/activities";
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(endpoint, { data: { name } });
+      return dispatch({
+        type: DELETE_ACTIVITY_ACTIVITY,
+        payload: data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: DELETE_ACTIVITY_ERROR,
+        payload: error.message,
+      });
+    }
   };
 };

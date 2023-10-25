@@ -1,0 +1,25 @@
+.principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.activity {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.button {
+  margin-left: 10px;
+  background-color: #db1515;
+}
+
+.backLink {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 50px;
+  color: #2618a1;
+  margin-top: 50px;
+}

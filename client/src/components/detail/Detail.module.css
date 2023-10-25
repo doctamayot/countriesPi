@@ -19,14 +19,14 @@
 
 .cardImage {
   max-width: 100%;
-  height: auto;
+  max-height: 300px;
   border-radius: 4px;
   margin-bottom: 10px;
 }
 
 .cardDetails div {
-  margin-bottom: 6px;
   text-align: center;
+  display: flex;
 }
 
 li {
@@ -40,6 +40,7 @@ li {
   color: #333;
   margin: 10px;
   padding: 0;
+  font-weight: bolder;
 }
 
 .title {
@@ -55,4 +56,9 @@ li {
   text-decoration: none;
   font-size: 50px;
   color: #2618a1;
+}
+
+.titles {
+  font-weight: bolder;
+  margin-right: 10px;
 }

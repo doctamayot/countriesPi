@@ -10,6 +10,7 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_POP,
   CREATE_ACTIVITY_ERROR,
+  DELETE_ACTIVITY,
 } from "./action.types";
 
 const initialState = {
@@ -25,6 +26,7 @@ const initialState = {
   },
   activities: [],
   backupContinents: [],
+  activity_error: "",
   activity_error: "",
 };
 
@@ -58,6 +60,11 @@ export const countriesReducer = (state = initialState, { type, payload }) => {
         ...state,
         activity: payload,
         activity_error: "",
+      };
+    case DELETE_ACTIVITY:
+      return {
+        ...state,
+        activity_error: payload,
       };
     case CREATE_ACTIVITY_ERROR:
       return {

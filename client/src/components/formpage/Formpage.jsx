@@ -1,8 +1,11 @@
 import { useState } from "react";
+
 import { createActivity } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { validation } from "../../helpers/validation";
+
 import { Link } from "react-router-dom";
+
+import { validation } from "../../helpers/validation";
 
 import styles from "./Formpage.module.css";
 
@@ -37,10 +40,10 @@ export const Formpage = () => {
     });
 
     if (name === "duration") {
-      const durationNumber = Number(value);
+      const durationNumber = Number(value) || "";
       setActivityData({ ...activityData, [name]: durationNumber });
     } else if (name === "dificulty") {
-      const dificultyNumber = Number(value);
+      const dificultyNumber = Number(value) || "";
       setActivityData({ ...activityData, [name]: dificultyNumber });
     } else if (name === "country") {
       if (!value.includes(",")) {
@@ -138,7 +141,7 @@ export const Formpage = () => {
         )}
         <label>Duration: </label>
         <input
-          type="number"
+          type="text"
           min="1"
           value={activityData.duration}
           onChange={handleChange}
@@ -149,7 +152,7 @@ export const Formpage = () => {
         )}
         <label>Dificulty: </label>
         <input
-          type="number"
+          type="text"
           min="1"
           value={activityData.dificulty}
           onChange={handleChange}

@@ -3,7 +3,7 @@ const app = require("../../server");
 
 describe("Routes", () => {
   it("Should be a list of activities", async () => {
-    const response = await request(app).get("/countries");
+    const response = await request(app).get("/activities");
     expect(response.statusCode).toBe(200);
     expect(response.body).toBeDefined();
     expect(response.body).toBeInstanceOf(Object);
@@ -15,5 +15,13 @@ describe("Routes", () => {
     expect(response.statusCode).toBe(200);
     expect(response.body).toBeDefined();
     expect(response.body).toBeInstanceOf(Object);
+    expect(response.body.id).toEqual("COL");
+  });
+  it("Should be a list of countries.", async () => {
+    const response = await request(app).get("/countries");
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toBeDefined();
+    expect(response.body).toBeInstanceOf(Object);
+    expect(response.body[0].id).toBeDefined();
   });
 });

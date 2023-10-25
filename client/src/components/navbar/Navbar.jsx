@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-import "./Navbar.css";
 import { useDispatch } from "react-redux";
 import { getCountriesBy } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
   const [value, setValue] = useState("");
@@ -15,13 +15,13 @@ export const Navbar = () => {
     setValue(e.target.value);
   };
   return (
-    <div className="principalNav">
-      <h2 className="logo">Countries App</h2>
+    <div className={styles.principalNav}>
+      <h2 className={styles.logo}>Countries App</h2>
       <Link to="/activity">
-        <h2 className="button">Create Activity</h2>
+        <h2 className={styles.button}>Create Activity</h2>
       </Link>
       <input
-        className="inputNav"
+        className={styles.inputNav}
         type="text"
         onChange={handleChange}
         value={value}

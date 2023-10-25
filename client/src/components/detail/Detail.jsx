@@ -12,7 +12,6 @@ export const Detail = () => {
 
   const dispatch = useDispatch();
   const country = useSelector((state) => state.country);
-  console.log(country);
 
   useEffect(() => {
     const fetchData = async () => {

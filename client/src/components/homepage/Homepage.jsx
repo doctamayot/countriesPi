@@ -10,11 +10,11 @@ import {
   orderByPop,
 } from "../../redux/actions";
 
-import "./Homepage.css";
 import { Card } from "../card/Card";
 import { Loading } from "../loading/Loading";
 import { Pagination } from "../pagination/Pagination";
-import { Filters } from "../filters/filters";
+import { Filters } from "../filters/Filters";
+import styles from "./Homepage.module.css";
 
 export const Homepage = () => {
   const countriesPerPage = 10;
@@ -113,10 +113,10 @@ export const Homepage = () => {
         activities={activities}
       />
       {loading && <Loading />}
-      <div className="principalHomepage">
+      <div className={styles.principalHomepage}>
         {countries.length ? (
           countries.map((country, index) => (
-            <div key={index} className="country">
+            <div key={index} className={styles.country}>
               <Card
                 name={country.name}
                 img={country.img}
@@ -126,7 +126,7 @@ export const Homepage = () => {
             </div>
           ))
         ) : (
-          <div className="ErrorExist">
+          <div className={styles.errorExist}>
             <h3>This country doesn't exist</h3>
           </div>
         )}

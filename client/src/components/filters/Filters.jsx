@@ -1,4 +1,4 @@
-import "./Filters.css";
+import styles from "./Filters.module.css";
 
 export const Filters = ({
   handleChangeActivity,
@@ -8,10 +8,10 @@ export const Filters = ({
   activities,
 }) => {
   return (
-    <div className="filters">
-      <div className="filter">
+    <div className={styles.filters}>
+      <div className={styles.filter}>
         <label>Continent:</label>
-        <select value={selectedContinent} onChange={handleChangeContinents}>
+        <select onChange={handleChangeContinents}>
           <option value="All">All</option>
           <option value="Africa">Africa</option>
           <option value="Europe">Europe</option>
@@ -21,7 +21,7 @@ export const Filters = ({
           <option value="Asia">Asia</option>
         </select>
       </div>
-      <div className="filter">
+      <div className={styles.filter}>
         <label>Activities:</label>
         <select onChange={handleChangeActivity} defaultValue="none">
           <option value="none">none</option>
@@ -33,17 +33,17 @@ export const Filters = ({
         </select>
       </div>
 
-      <div className="filter">
+      <div className={styles.filter}>
         <label>Sort by Name:</label>
-        <select value={selectedPopulation} onChange={handleChangeSortName}>
+        <select onChange={handleChangeSortName}>
           <option value="none">none</option>
           <option value="ascending">ascending</option>
           <option value="descending">descending</option>
         </select>
       </div>
-      <div className="filter">
+      <div className={styles.filter}>
         <label>Sort By population:</label>
-        <select value={selectedPopulation} onChange={handleChangeSortPop}>
+        <select onChange={handleChangeSortPop}>
           <option value="none">none</option>
           <option value="ascending">ascending</option>
           <option value="descending">descending</option>

@@ -36,6 +36,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Country, Activity } = sequelize.models;
 
+//Relaciones
 Country.belongsToMany(Activity, { through: "Countries Activities" });
 Activity.belongsToMany(Country, { through: "Countries Activities" });
 

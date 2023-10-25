@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCountry } from "../../redux/actions";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import "./Detail.css";
+import styles from "./Detail.module.css";
 import { Loading } from "../loading/Loading";
 
 export const Detail = () => {
@@ -12,6 +12,7 @@ export const Detail = () => {
 
   const dispatch = useDispatch();
   const country = useSelector((state) => state.country);
+  console.log(country);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,21 +31,42 @@ export const Detail = () => {
 
   return (
     <>
+      <h1 className={styles.title}>Country Detail</h1>
       {loading && <Loading />}
-      <div className="card">
-        <div className="card-content">
-          <div className="card-title">{country.name}</div>
-          <img src={country.img} alt={country.name} className="card-image" />
-          <div className="card-details">
+      <div className={styles.card}>
+        <div className={styles.cardContent}>
+          <div className={styles.cardTitle}>{country.name}</div>
+          <img
+            src={country.img}
+            alt={country.name}
+            className={styles.cardImage}
+          />
+          <div className={styles.cardDetails}>
             <div>ID: {country.id}</div>
             <div>Continent: {country.continents}</div>
             <div>Capital: {country.capital}</div>
             <div>Subregion: {country.subregion}</div>
             <div>Population: {country.poblacion}</div>
             <div>Area: {country.area}</div>
+            <div>
+              Activities:{" "}
+              {country.Activities && country.Activities.length === 0 ? (
+                <h3>There are no activities in this country.</h3>
+              ) : (
+                country.Activities &&
+                country.Activities.map((act, index) => (
+                  <li key={index}>
+                    <ol className={styles.activities}>{act.name}</ol>
+                  </li>
+                ))
+              )}
+            </div>
           </div>
         </div>
       </div>
+      <Link to="/homepage">
+        <div className={styles.backLink}>Back</div>
+      </Link>
     </>
   );
 };

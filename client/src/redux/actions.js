@@ -1,11 +1,16 @@
 import axios from "axios";
 import {
   CREATE_ACTIVITY,
+  CREATE_ACTIVITY_ERROR,
   CURRENT_PAGE,
+  FILTER_BY_ACTIVITY,
   FILTER_BY_CONTINENT,
+  GET_ACTIVITY,
   GET_ALL_COUNTRIES,
   GET_COUNTRIES_BY,
   GET_COUNTRY_BY,
+  ORDER_BY_NAME,
+  ORDER_BY_POP,
   UPLOAD_COUNTRIES,
 } from "./action.types";
 
@@ -82,6 +87,23 @@ export const createActivity = (activityData) => {
         payload: data,
       });
     } catch (error) {
+      return dispatch({
+        type: CREATE_ACTIVITY_ERROR,
+        payload: error.response.data.message,
+      });
+    }
+  };
+};
+export const getActivities = () => {
+  const endpoint = "http://localhost:3001/activities";
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(endpoint);
+      return dispatch({
+        type: GET_ACTIVITY,
+        payload: data,
+      });
+    } catch (error) {
       return error.message;
     }
   };
@@ -91,5 +113,24 @@ export const filterByContinent = (continent) => {
   return {
     type: FILTER_BY_CONTINENT,
     payload: continent,
+  };
+};
+
+export const filterByActivity = (activity) => {
+  return {
+    type: FILTER_BY_ACTIVITY,
+    payload: activity,
+  };
+};
+export const orderByName = (type) => {
+  return {
+    type: ORDER_BY_NAME,
+    payload: type,
+  };
+};
+export const orderByPop = (type) => {
+  return {
+    type: ORDER_BY_POP,
+    payload: type,
   };
 };

@@ -5,7 +5,7 @@ export const Card = ({ name, img, continent, id }) => {
   return (
     <Link to={`/detail/${id}`}>
       <div className="principalCard">
-        <h3>{name}</h3>
+        <h3 style={{ fontSize: "15px" }}>{name}</h3>
         <img src={img} alt={name} className="imgFlag" />
         <h5>{continent}</h5>
       </div>

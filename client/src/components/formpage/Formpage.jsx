@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { createActivity } from "../../redux/actions";
-import "./Formpage.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { validation } from "../../helpers/validation";
+import { Link } from "react-router-dom";
+
+import styles from "./Formpage.module.css";
 
 export const Formpage = () => {
   const [activityData, setActivityData] = useState({
@@ -21,7 +23,9 @@ export const Formpage = () => {
     general: "",
   });
   const [messageOK, setMessageOK] = useState(false);
+
   const dispatch = useDispatch();
+  const activity_error = useSelector((state) => state.activity_error);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,7 +77,7 @@ export const Formpage = () => {
       return;
     }
     dispatch(createActivity(activityData));
-    setMessageOK(true);
+
     setActivityData({
       name: "",
       season: "",
@@ -81,6 +85,7 @@ export const Formpage = () => {
       duration: "",
       country: "",
     });
+    setMessageOK(true);
     setTimeout(() => {
       setMessageOK(false);
     }, 2000);
@@ -90,7 +95,13 @@ export const Formpage = () => {
   };
   return (
     <div>
-      {messageOK && <h2 className="messageOK">Activity created!!!</h2>}
+      <h1 className={styles.title}>Create Activity</h1>
+      {activity_error ? (
+        <div className={styles.error}>{activity_error}</div>
+      ) : (
+        messageOK && <h2 className={styles.messageOK}>Activity created!!!</h2>
+      )}
+
       {errors && errors.general && (
         <h4
           style={{
@@ -103,6 +114,7 @@ export const Formpage = () => {
           {errors.general}
         </h4>
       )}
+
       <form onSubmit={handleSubmit}>
         <label>Name: </label>
         <input
@@ -152,7 +164,7 @@ export const Formpage = () => {
           value={activityData.country}
           onChange={handleChange}
           name="country"
-          placeholder="Countries ID separate with ,"
+          placeholder="Separate the countries with a ','"
         />
         {errors && errors.country && (
           <h4 style={{ color: "red" }}>{errors.country}</h4>
@@ -163,6 +175,9 @@ export const Formpage = () => {
           !errors.dificulty &&
           !errors.country && <button type="submit">Enviar</button>}
       </form>
+      <Link to="/homepage">
+        <div className={styles.backLink}>Back</div>
+      </Link>
     </div>
   );
 };

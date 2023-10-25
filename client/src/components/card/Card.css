@@ -1,15 +1,17 @@
 .imgFlag {
-  height: 200px;
-  width: 300px;
+  height: 50%;
+  width: 70%;
+  margin: 0 auto;
+  border: 1px solid;
 }
 
 .principalCard {
-  border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
   background-color: #d8eef8;
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 200px;
   margin-top: 30px;
+  text-align: center;
 }
